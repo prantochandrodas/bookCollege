@@ -45,7 +45,9 @@ const Signup = () => {
                                     password: data.password,
                                     name: data.name,
                                     photoURL: imageData.data.url,
-                                    email: data.email
+                                    email: data.email,
+                                    university:data.university,
+                                    address:data.address
                                 }
                                 saveUser(userInfo)
                             }
@@ -62,9 +64,11 @@ const Signup = () => {
         const user = {
             name: userInfo.name,
             email: userInfo?.email,
-            photo: userInfo?.photoURL
+            photo: userInfo?.photoURL,
+            university:userInfo?.university,
+            address:userInfo?.address
         }
-        fetch('https://get-social-server.vercel.app/addUser', {
+        fetch('http://localhost:5000/addUser', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -81,7 +85,7 @@ const Signup = () => {
                         email: userInfo.email
                     }
                     console.log(currentUser)
-                    fetch('https://house-hunter-server-eta.vercel.app/jwt', {
+                    fetch('http://localhost:5000', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -90,7 +94,7 @@ const Signup = () => {
                     })
                     .then(res => res.json())
                     .then(newData=>{
-                        localStorage.setItem('token', newData.token)
+                        // localStorage.setItem('token', newData.token)
                         SetLoading(false);
                         navigate('/')
                     })
@@ -157,6 +161,35 @@ const Signup = () => {
                                         className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                                     />
                                     {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
+                                </div>
+
+
+
+                                <div>
+                                    <label className="font-medium">
+                                        address
+                                    </label>
+                                    <input
+                                        {...register("address", { required: "address is required" })}
+                                        type="text"
+                                        required
+                                        className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                                    />
+                                    {errors.address && <p className='text-red-600'>{errors.address?.message}</p>}
+                                </div>
+
+
+                                <div>
+                                    <label className="font-medium">
+                                    University
+                                    </label>
+                                    <input
+                                        {...register("university", { required: "university is required" })}
+                                        type="text"
+                                        required
+                                        className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                                    />
+                                    {errors.university && <p className='text-red-600'>{errors.university?.message}</p>}
                                 </div>
                                 <div>
                                     <label className="font-medium">
