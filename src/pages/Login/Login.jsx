@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../Contexts/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
+import Loading from '../Loading/Loading';
 
 const Login = () => {
     const { loginUser, createUserWithGoogle } = useContext(AuthContext);
@@ -67,9 +68,9 @@ const Login = () => {
             })
     }
 
-    // if (loading) {
-    //     return <Loading></Loading>
-    // }
+    if (loading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <main className="w-full h-full flex flex-col items-center justify-center bg-gray-50 sm:px-4">

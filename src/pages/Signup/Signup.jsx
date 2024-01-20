@@ -3,6 +3,7 @@ import logo from '../../assets/Logo/book-education-arrow-logo-vector-15820150.jp
 import { useContext, useState } from 'react';
 import { AuthContext } from '../Contexts/AuthProvider';
 import { useForm } from 'react-hook-form';
+import Loading from '../Loading/Loading';
 
 const Signup = () => {
     const { createUser, userUpdata } = useContext(AuthContext);
@@ -102,9 +103,9 @@ const Signup = () => {
                 }
             })
     }
-    // if (loading) {
-    //     return <Loading></Loading>
-    // }
+    if (loading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <div>

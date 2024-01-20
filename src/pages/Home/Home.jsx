@@ -1,24 +1,21 @@
-import { useContext } from "react";
-import { AuthContext } from "../Contexts/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import HomeBanner from "../HomeBanner/HomeBanner";
+import HomeColleges from "../HomeColleges/HomeColleges";
+import HomeResearchPaper from "../HomeResearchPaper/HomeResearchPaper";
+import ImageGallery from "../ImageGallery/ImageGallery";
+import Testimonials from "../Testimonials/Testimonials";
 
 
 const Home = () => {
-    const navigate = useNavigate();
-    const { user,logOut } = useContext(AuthContext);
-    const handelLogout = () => {
-        logOut()
-            .then(() => {
-                navigate('/signUp')
-            })
 
-    }
-    return (
-        <div>
-            <img src={user?.photoURL} className="w-[20px]" alt="" />
-            <button onClick={handelLogout}>logout</button>
-        </div>
-    );
+  return (
+    <div>
+      <HomeBanner />
+      <HomeColleges />
+      <ImageGallery/>
+      <HomeResearchPaper />
+      <Testimonials/>
+    </div>
+  );
 };
 
 export default Home;

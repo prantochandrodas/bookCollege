@@ -1,0 +1,50 @@
+#home{
+  position: relative;
+ 
+}
+  
+  .home .content{
+    max-width: 50rem;
+
+  }
+  
+  .back-video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+   object-fit: cover;
+  }
+
+  @media (min-aspect-ratio: 16/9){
+    .back-video{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+ @media (max-aspect-ratio: 16/9){
+    .back-video{
+      width: auto;
+      height:100%;
+    }
+  } 
+
+  /* .home .content h3{
+    font-size: 5rem;
+    color: var(--white);
+    line-height: 1.2;
+  } */
+  
+  /* .home .content p{
+    font-size: 1.5rem;
+    line-height: 2;
+    color: var(--white);
+    padding: 1rem 0;
+  } */
+
+
+
+  
+
+   
