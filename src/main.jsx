@@ -16,6 +16,8 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import UserProfile from './pages/UserProfile/UserProfile';
+import AllColleges from './pages/AllColleges/AllColleges';
+import CollegeDetails from './pages/CollegeDetails/CollegeDetails';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -37,9 +39,18 @@ const router = createBrowserRouter([
         element: <Login />
       },
       {
+        path:'/allColleges',
+        element:<AllColleges/>
+      },
+      {
         path:'/user/:email',
         element:<UserProfile></UserProfile>,
         loader:({params})=>fetch(`http://localhost:5000/user/${params.email}`)
+      },
+      {
+        path:'/college/:id',
+        element:<CollegeDetails/>,
+        loader:({params})=>fetch(`http://localhost:5000/collegeDetails/${params.id}`)
       }
     ]
   },

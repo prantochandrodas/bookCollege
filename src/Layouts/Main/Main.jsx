@@ -5,7 +5,7 @@ import HomeNavbar from "../../pages/HomeNavbar/HomeNavbar";
 const Main = () => {
     return (
         <div>
-            <HomeNavbar/>
+            {/* <HomeNavbar/> */}
             <Outlet/>
         </div>
     );
