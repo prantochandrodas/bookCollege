@@ -18,7 +18,12 @@ import {
 import UserProfile from './pages/UserProfile/UserProfile';
 import AllColleges from './pages/AllColleges/AllColleges';
 import CollegeDetails from './pages/CollegeDetails/CollegeDetails';
-
+import SingelEventDetails from './pages/SingelEventDetails/SingelEventDetails';
+import SearchColleges from './pages/SearchColleges/SearchColleges';
+import Admission from './pages/Admission/Admission';
+import MyCollege from './pages/MyCollege/MyCollege';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 // Create a client
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -48,9 +53,26 @@ const router = createBrowserRouter([
         loader:({params})=>fetch(`http://localhost:5000/user/${params.email}`)
       },
       {
+        path:'/singelEvent',
+        element:<SingelEventDetails/> 
+      },
+      {
+        path:"/serch",
+        element:<SearchColleges/>
+      },
+      {
         path:'/college/:id',
         element:<CollegeDetails/>,
         loader:({params})=>fetch(`http://localhost:5000/collegeDetails/${params.id}`)
+      },
+      {
+        path:'/admission',
+        element:<Admission/>
+      },
+      {
+        path:'/myCollege/:email',
+        element:<MyCollege/>,
+        loader:({params})=>fetch(`http://localhost:5000/findAddmitionId/${params.email}`)
       }
     ]
   },
@@ -61,6 +83,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <RouterProvider router={router} />
+        <ToastContainer></ToastContainer>
       </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>,

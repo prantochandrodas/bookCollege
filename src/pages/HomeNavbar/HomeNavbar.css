@@ -1,22 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+
 #navbarfont {
   font-family: 'Montserrat', sans-serif;
 }
 
 
-.robotofont{
+.robotofont {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-header{
-  width:100%;
+header {
+  width: 100%;
   height: 100px;
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
   position: sticky;
-  /* top: 0; */
+  top: 0;
   z-index: 99;
   box-shadow: 0 0 10px #000;
   background: white;
@@ -82,7 +83,7 @@ header ul {
 
 header ul li {
   list-style: none;
-  margin:0px 20px;
+  margin: 0px 20px;
 }
 
 header ul li a {
@@ -211,29 +212,30 @@ header .menu {
   .search-box button {
     position: absolute;
   }
-
+  header{
+    position: fixed;
+    top: 0;
+  }
   header ul {
     position: fixed;
     top: 100px;
     right: -100%;
     color: black;
     justify-content: start;
-    
-    /* background: rgba(0,0,0,0.5)!important;  */
     background: white;
-    /* height: calc(100vh - 100px); */
-    height: 100%;
+    height: 100vh;
     width: 100%;
     flex-direction: column;
     align-items: center;
     transition: right 0.5s linear;
   }
+
   header ul li {
     list-style: none;
     margin: 50px 0px;
   }
-  
- 
+
+
 
   header .menu {
     display: block;
@@ -241,10 +243,10 @@ header .menu {
     text-align: center;
   }
 
-  #chk1:checked~ul {
+  #chk1:checked ~ ul {
     right: 0;
-  
+
   }
- 
+
 
 }

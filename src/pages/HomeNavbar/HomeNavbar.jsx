@@ -13,7 +13,7 @@ import logout from '../../assets/dropdown/log-out.png'
 
 const HomeNavbar = () => {
     const navigate = useNavigate();
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut ,setAdmission} = useContext(AuthContext);
     const handelLogout = () => {
         logOut()
             .then(() => {
@@ -32,13 +32,11 @@ const HomeNavbar = () => {
             if (!target.closest(".menu-btn")) setState(false);
         };
     }, [])
-    console.log(user)
 
 
 
 
     const [open, setOpen] = useState(false);
-    console.log(open)
     let menuRef = useRef();
     let imgRef = useRef();
     window.addEventListener('click', (e) => {
@@ -46,18 +44,26 @@ const HomeNavbar = () => {
             setOpen(false)
         }
     })
+   
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/findAddmitionId/email=${user?.email}`)
+    //         .then(res => res.json())
+    //         .then(result => {
+    //             console.log(result)
+    //             setAdmission(result)
+    //         })
+    // }, [user?.email,setAdmission]);
+
+
     return (
         <header id="head">
             <input type="checkbox" name id="chk1" />
             <div className="logo"><img src={logo} className="w-[80px]" alt="" /></div>
             <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><a href="#">Colleges</a></li>
-                <li><a href="#">Admission</a></li>
-                <li><a href="#">My College</a></li>
-                {/* <li className="flex" onClick={() => { setOpen(!open) }}>
-                    <img ref={imgRef} className="object-cover w-12 ring ring-blue-500 h-12 rounded-full" src={user?.photoURL} alt="" />
-                </li> */}
+                <li><Link to="allColleges">Colleges</Link></li>
+                <li><Link to="/admission">Admission</Link></li>
+                <li><Link to={`/myCollege/${user?.email}`}>My College</Link></li>
             </ul>
 
             {/* user photo  */}

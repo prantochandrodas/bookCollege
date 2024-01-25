@@ -1,18 +1,41 @@
-import { useLoaderData } from "react-router-dom";
+import { Navigate, useLoaderData, useNavigate } from "react-router-dom";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Contexts/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 const UserProfile = () => {
     const data = useLoaderData();
-    console.log(data)
+    const {logOut}=useContext(AuthContext);
+    const [CollegesData, setDatas] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const Navigate=useNavigate();
+    const handelLogout=()=>{
+        logOut()
+        .then(() => {
+            Navigate('/signUp')
+        })
+    }
+    // useEffect(() => {
+    //     setLoading(true);
+    //     fetch(`http://localhost:5000/findCollege?id=${data?.university}`)
+    //         .then(res => res.json())
+    //         .then(result => {
+    //             console.log(result.result)
+    //             setDatas(result)
+    //             setLoading(false);
+    //         })
+    // }, [data?.university]);
+  console.log(CollegesData);
     return (
         <div>
             <div className="p-[20px] pt-[150px] drop-shadow-xl min-h-screen lg:min-h-full md:min-h-full lg:w-[40%] md:w-[40%] w-[100%] mx-auto lg:bg-white  bg-[rgba(250,250,250,255)]">
-                <div className="flex my-3 items-center justify-end">
+                <div onClick={handelLogout} className="flex my-3 items-center justify-end">
                     <div className="text-gray-400 lg:text-[24px] text-[15px]"><img src="https://cdn-icons-png.flaticon.com/512/6815/6815140.png" className="w-[50px]" alt="" /></div>
-                    <p style={{ fontFamily: 'Poppins' }} className="ml-2 lg:text-[24px] text-[15px] hover:text-red-400">Logout</p>
+                    <p style={{ fontFamily: 'Poppins' }} className="ml-2 cursor-pointer lg:text-[24px] text-[15px] hover:text-red-400">Logout</p>
                 </div>
                 <div className="flex flex-col items-center justify-center ">
                     <img className="object-cover w-24 ring ring-blue-500 h-24 rounded-full" src={data?.photo} alt="" />

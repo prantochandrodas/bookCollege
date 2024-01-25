@@ -9,7 +9,8 @@ const AuthProvider = ({children}) => {
     const [loading,setLoading]=useState(true);
     const [searchData,setSearchData]=useState('');
     const [searchModal,setSearchModal]=useState(null);
-    
+    const [event,setEvent]=useState(null);
+    const [admission,setAdmission]=useState(null);
     
     //    signUp 
     const createUser=(email,password)=>{
@@ -58,7 +59,11 @@ const AuthProvider = ({children}) => {
         searchData,
         createUserWithGoogle,
         setSearchModal,
-        searchModal
+        searchModal,
+        admission,
+        setAdmission,
+        setEvent,
+        event
     }
  
     return (
